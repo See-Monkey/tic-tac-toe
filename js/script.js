@@ -1,22 +1,65 @@
 console.log("Hi, Mom!");
 
-//create player         .player
-    //name and symbol   .name
-    //                  .symbol
+const player1 = {name: "Player 1", symbol: "X"};
+const player2 = {name: "Player 2", symbol: "O"}
 
-//gameboard                         .board
-    //play a symbol on a cell       .mark
-    //reset (clear)                 .reset
-    //return current arrangement    .status
 
-//game controller   .game
-    //start         .start
-    //player move   .move
-    //switch player .switch
-    //check win     .check
+const Board = (() => {
+    let board = ["", "", "", "", "", "", "", "", ""];
 
-//display controller .display
-    //initialize     .init
-    //begin game     .begin
-    //redraw         .redraw
-    //display winner .winner
+    function mark(index, symbol) {
+        board[index] = symbol;
+    }
+
+    function clear() {
+        board = ["", "", "", "", "", "", "", "", ""];
+    }
+
+    function status() {
+        return board;
+    }
+
+    return {mark, clear, status};
+})();
+
+const Game = (() => {
+    let currentPlayer;
+
+    function start() {
+        currentPlayer = player1;
+    }
+
+    function move(index) {
+        Board.mark(index, currentPlayer.symbol);
+    }
+
+    function next() {
+        currentPlayer = currentPlayer === player1 ? player2 : player1;
+    }
+
+    function check() {
+
+    }
+
+    return {start, move, next, check};
+})();
+
+const Display = (() => {
+    function init() {
+
+    }
+
+    function begin() {
+
+    }
+
+    function redraw() {
+
+    }
+
+    function winner() {
+
+    }
+
+    return {init, begin, redraw, winner};
+})();
