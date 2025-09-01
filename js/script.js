@@ -31,6 +31,14 @@ const Game = (() => {
 
     function move(index) {
         Board.mark(index, currentPlayer.symbol);
+        console.log(`${currentPlayer.name} plays ${currentPlayer.symbol} at square ${index}.`)
+        if (check() === true) {
+            Display.gameOver(currentPlayer);
+        } else if (check() === false) {
+            Display.gameOver("draw");
+        } else {
+            Game.next();
+        }
     }
 
     function next() {
@@ -38,7 +46,22 @@ const Game = (() => {
     }
 
     function check() {
-
+        const wins = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]];
+        for (let i = 0; i < 8; i++) {
+            let matches = 0;
+            for (let j = 0; j < 3; j++) {
+                if (Board.status()[wins[i][j]] === currentPlayer.symbol) {
+                    matches += 1;
+                }
+            if (matches === 3) {
+                return true; //current player win
+            }
+        }
+        if (!Board.status().includes("")) {
+            return false; //draw
+        }
+        }
+        return;
     }
 
     return {start, move, next, check};
@@ -57,9 +80,13 @@ const Display = (() => {
 
     }
 
-    function winner() {
-
+    function gameOver(status) {
+        if (status === "draw") {
+            console.log("Game ends in a draw.")
+        } else if (status !== "draw") {
+            console.log(`${status.name} wins the game.`)
+        }
     }
 
-    return {init, begin, redraw, winner};
+    return {init, begin, redraw, gameOver};
 })();
