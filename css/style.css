@@ -36,3 +36,24 @@ h1, h2, h3, h4, h5, h6 {
 :root {
   /* declare global custom properties (variables)*/
 }
+
+body {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+dialog {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+}
+
+.header{
+
+}
+
+.board {
+
+}
