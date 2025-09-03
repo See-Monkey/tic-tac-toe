@@ -34,20 +34,35 @@ h1, h2, h3, h4, h5, h6 {
   isolation: isolate;
 }
 :root {
-  /* declare global custom properties (variables)*/
+  --jet: #262927;
+  --slate: #5b414f;
+  --silver: #dcd0d7;
+  --blue: #2274a5;
+  --l-blue: #53f4ff;
+  --pink: #ed0e90;
+  --yellow: #ffe74c;
 }
+  
 
 body {
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(var(--blue), var(--l-blue), var(--pink), var(--yellow));
+  background-repeat: no-repeat;
   text-align: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 dialog {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  background-image: linear-gradient(var(--yellow), var(--l-blue));
+
 }
 
 .header{
@@ -55,5 +70,19 @@ dialog {
 }
 
 .board {
+  aspect-ratio: 1/1;
+  display: grid;
+  grid-template-rows: repeat(3, 75px);
+  grid-template-columns: repeat(3, 75px);
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: #26292744;
+}
 
+.board div {
+  min-height: 50px;
+  max-height: 25%;
+  aspect-ratio: 1/1;
+  background-color: var(--slate);
 }
