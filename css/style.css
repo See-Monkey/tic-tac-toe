@@ -70,7 +70,7 @@ input {
   margin: 10px;
 }
 
-button {
+#startBtn {
   border-radius: 10px;
   margin-top: 20px;
   padding: 5px 30px;
@@ -107,13 +107,15 @@ button {
   grid-template-columns: repeat(3, 75px);
   justify-items: center;
   align-items: center;
+  justify-content: center;
+  align-content: center;
   gap: 20px;
   background-color: #26292744;
   padding: 20px;
   border-radius: 20px;
 }
 
-.board div {
+.board button {
   min-height: 75px;
   max-height: 25%;
   aspect-ratio: 1/1;

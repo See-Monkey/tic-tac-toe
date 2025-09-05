@@ -1,7 +1,7 @@
 console.log("Hi, Mom!");
 
-const player1 = {name: "Play 1", symbol: "X"};
-const player2 = {name: "Play 2", symbol: "O"}
+const player1 = {name: "Player 1", symbol: "X"};
+const player2 = {name: "Player 2", symbol: "O"}
 
 
 const Board = (() => {
@@ -70,13 +70,16 @@ const Game = (() => {
 const Display = (() => {
     const dialog = document.querySelector("dialog");
     const start = document.querySelector("#startBtn");
+    const board = document.querySelector(".board");
 
     function init() {
         dialog.showModal();
+
+        board.innerHTML = "";
     }
 
     function begin() {
-        console.log("start clicked");
+        board.innerHTML = "";
         const p1nameInput = document.querySelector("#p1nameInput");
         const p2nameInput = document.querySelector("#p2nameInput");
         const p1name = document.querySelector(".p1name");
@@ -90,6 +93,12 @@ const Display = (() => {
         p2name.textContent = player2.name;
         p1symbol.textContent = player1.symbol;
         p2symbol.textContent = player2.symbol;
+
+        for (let i = 0; i < 9; i++) {
+            const cell = document.createElement("button");
+            cell.id = `board${i}`
+            board.appendChild(cell);
+        }
     }
 
     function redraw() {
